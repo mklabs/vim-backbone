@@ -1,0 +1,8 @@
+{
+  "author": "mklabs",
+  "name": "vim-backbone",
+  "description": "Collection of Backbone VIM snippets and templates.",
+  "version": "0.1.0",
+  "dependencies": {},
+  "devDependencies": {}
+}
