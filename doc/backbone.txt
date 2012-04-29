@@ -1,0 +1,2795 @@
+*backbone.txt*	Plugin for working with Backbone applications
+
+|backbone-introduction|		introduction
+|backbone-upgrading|		upgrading
+|backbone-events|		Events
+|backbone-events-on|		Events-on
+|backbone-events-off|		Events-off
+|backbone-events-trigger|		Events-trigger
+|backbone-model|		Model
+|backbone-model-extend|		Model-extend
+|backbone-model-constructor|		Model-constructor
+|backbone-model-get|		Model-get
+|backbone-model-set|		Model-set
+|backbone-model-escape|		Model-escape
+|backbone-model-has|		Model-has
+|backbone-model-unset|		Model-unset
+|backbone-model-clear|		Model-clear
+|backbone-model-id|		Model-id
+|backbone-model-idattribute|		Model-idAttribute
+|backbone-model-cid|		Model-cid
+|backbone-model-attributes|		Model-attributes
+|backbone-model-changed|		Model-changed
+|backbone-model-defaults|		Model-defaults
+|backbone-model-tojson|		Model-toJSON
+|backbone-model-fetch|		Model-fetch
+|backbone-model-save|		Model-save
+|backbone-model-destroy|		Model-destroy
+|backbone-model-validate|		Model-validate
+|backbone-model-isvalid|		Model-isValid
+|backbone-model-url|		Model-url
+|backbone-model-urlroot|		Model-urlRoot
+|backbone-model-parse|		Model-parse
+|backbone-model-clone|		Model-clone
+|backbone-model-isnew|		Model-isNew
+|backbone-model-change|		Model-change
+|backbone-model-haschanged|		Model-hasChanged
+|backbone-model-changedattributes|		Model-changedAttributes
+|backbone-model-previous|		Model-previous
+|backbone-model-previousattributes|		Model-previousAttributes
+|backbone-collection|		Collection
+|backbone-collection-extend|		Collection-extend
+|backbone-collection-model|		Collection-model
+|backbone-collection-constructor|		Collection-constructor
+|backbone-collection-models|		Collection-models
+|backbone-collection-tojson|		Collection-toJSON
+|backbone-collection-underscore-methods|		Collection-Underscore-Methods
+|backbone-collection-add|		Collection-add
+|backbone-collection-remove|		Collection-remove
+|backbone-collection-get|		Collection-get
+|backbone-collection-getbycid|		Collection-getByCid
+|backbone-collection-at|		Collection-at
+|backbone-collection-push|		Collection-push
+|backbone-collection-pop|		Collection-pop
+|backbone-collection-unshift|		Collection-unshift
+|backbone-collection-shift|		Collection-shift
+|backbone-collection-length|		Collection-length
+|backbone-collection-comparator|		Collection-comparator
+|backbone-collection-sort|		Collection-sort
+|backbone-collection-pluck|		Collection-pluck
+|backbone-collection-where|		Collection-where
+|backbone-collection-url|		Collection-url
+|backbone-collection-parse|		Collection-parse
+|backbone-collection-fetch|		Collection-fetch
+|backbone-collection-reset|		Collection-reset
+|backbone-collection-create|		Collection-create
+|backbone-router|		Router
+|backbone-router-extend|		Router-extend
+|backbone-router-routes|		Router-routes
+|backbone-router-constructor|		Router-constructor
+|backbone-router-route|		Router-route
+|backbone-router-navigate|		Router-navigate
+|backbone-history|		History
+|backbone-history-start|		History-start
+|backbone-sync|		Sync
+|backbone-sync-emulatehttp|		Sync-emulateHTTP
+|backbone-sync-emulatejson|		Sync-emulateJSON
+|backbone-view|		View
+|backbone-view-extend|		View-extend
+|backbone-view-constructor|		View-constructor
+|backbone-view-el|		View-el
+|backbone-view-el|		View-$el
+|backbone-view-setelement|		View-setElement
+|backbone-view-attributes|		View-attributes
+|backbone-view-dollar|		View-dollar
+|backbone-view-render|		View-render
+|backbone-view-remove|		View-remove
+|backbone-view-make|		View-make
+|backbone-make-demo|		make-demo
+|backbone-view-delegateevents|		View-delegateEvents
+|backbone-view-undelegateevents|		View-undelegateEvents
+|backbone-utility|		Utility
+|backbone-utility-noconflict|		Utility-noConflict
+|backbone-utility-setdomlibrary|		Utility-setDomLibrary
+|backbone-examples|		examples
+|backbone-examples-todos|		examples-todos
+|backbone-examples-documentcloud|		examples-documentcloud
+|backbone-examples-rdio|		examples-rdio
+|backbone-examples-linkedin|		examples-linkedin
+|backbone-examples-flow|		examples-flow
+|backbone-examples-audiovroom|		examples-audiovroom
+|backbone-examples-foursquare|		examples-foursquare
+|backbone-examples-wunderkit|		examples-wunderkit
+|backbone-examples-khan-academy|		examples-khan-academy
+|backbone-examples-do|		examples-do
+|backbone-examples-posterous|		examples-posterous
+|backbone-examples-pitchfork|		examples-pitchfork
+|backbone-examples-groupon|		examples-groupon
+|backbone-examples-basecamp|		examples-basecamp
+|backbone-examples-slavery-footprint|		examples-slavery-footprint
+|backbone-examples-stripe|		examples-stripe
+|backbone-examples-airbnb|		examples-airbnb
+|backbone-examples-diaspora|		examples-diaspora
+|backbone-examples-soundcloud|		examples-soundcloud
+|backbone-examples-artsy|		examples-artsy
+|backbone-examples-pandora|		examples-pandora
+|backbone-examples-code-school|		examples-code-school
+|backbone-examples-cloudapp|		examples-cloudapp
+|backbone-examples-seatgeek|		examples-seatgeek
+|backbone-examples-grove|		examples-grove
+|backbone-examples-kanogames|		examples-kanogames
+|backbone-examples-shortmail|		examples-shortmail
+|backbone-examples-battlefield|		examples-battlefield
+|backbone-examples-salon|		examples-salon
+|backbone-examples-tilemill|		examples-tilemill
+|backbone-examples-blossom|		examples-blossom
+|backbone-examples-animoto|		examples-animoto
+|backbone-examples-decide|		examples-decide
+|backbone-examples-editd|		examples-editd
+|backbone-examples-trello|		examples-trello
+|backbone-examples-ducksboard|		examples-ducksboard
+|backbone-examples-quietwrite|		examples-quietwrite
+|backbone-examples-tzigla|		examples-tzigla
+|backbone-faq|		faq
+|backbone-faq-events|		FAQ-events
+|backbone-faq-tim-toady|		FAQ-tim-toady
+|backbone-faq-nested|		FAQ-nested
+|backbone-faq-bootstrap|		FAQ-bootstrap
+|backbone-faq-extending|		FAQ-extending
+|backbone-faq-mvc|		FAQ-mvc
+|backbone-faq-this|		FAQ-this
+|backbone-faq-rails|		FAQ-rails
+
+INTRODUCTION				*backbone-introduction*
+
+
+      When working on a web application that involves a lot of JavaScript, one
+      of the first things you learn is to stop tying your data to the DOM. It's all
+      too easy to create JavaScript applications that end up as tangled piles of
+      jQuery selectors and callbacks, all trying frantically to keep data in
+      sync between the HTML UI, your JavaScript logic, and the database on your
+      server. For rich client-side applications, a more structured approach
+      is often helpful.
+    
+
+      With Backbone, you represent your data as
+      Models, which can be created, validated, destroyed,
+      and saved to the server. Whenever a UI action causes an attribute of
+      a model to change, the model triggers a "change" event; all
+      the Views that display the model's state can be notified of the
+      change, so that they are able to respond accordingly, re-rendering themselves with
+      the new information. In a finished Backbone app, you don't have to write the glue
+      code that looks into the DOM to find an element with a specific id,
+      and update the HTML manually
+      &mdash; when the model changes, the views simply update themselves.
+    
+
+      If you're new here, and aren't yet quite sure what Backbone is for, start by
+      browsing the list of Backbone-based projects.
+    
+
+      Many of the examples that follow are runnable. Click the play button
+      to execute them.
+    
+
+UPGRADING				*backbone-upgrading*
+
+
+      Backbone's 0.9 series should be considered as a release candidate
+      for an upcoming 1.0. Some APIs have changed, and while there is a
+      change log available, and many new features to
+      take advantage of, there are a few specific changes where you'll need
+      to take care:
+    
+
+EVENTS				*backbone-events*
+
+
+      Events is a module that can be mixed in to any object, giving the
+      object the ability to bind and trigger custom named events. Events do not
+      have to be declared before they are bound, and may take passed arguments.
+      For example:
+    
+
+var object = {};
+
+_.extend(object, Backbone.Events);
+
+object.on("alert", function(msg) {
+  alert("Triggered " + msg);
+});
+
+object.trigger("alert", "an event");
+
+
+      For example, to make a handy event dispatcher that can coordinate events
+      among different areas of your application: var dispatcher = _.clone(Backbone.Events)
+    
+
+EVENTS-ON				*backbone-events-on*
+
+object.on(event, callback, [context])
+
+      object.on(event, callback, [context])Alias: bind
+      
+      Bind a callback function to an object. The callback will be invoked
+      whenever the event is fired.
+      If you have a large number of different events on a page, the convention is to use colons to
+      namespace them: "poll:start", or "change:selection".
+      The event string may also be a space-delimited list of several events...
+    
+
+book.on("change:title change:author", ...);
+
+
+      To supply a context value for this when the callback is invoked,
+      pass the optional third argument: model.on('change', this.render, this)
+    
+
+      Callbacks bound to the special
+      "all" event will be triggered when any event occurs, and are passed
+      the name of the event as the first argument. For example, to proxy all events
+      from one object to another:
+    
+
+proxy.on("all", function(eventName) {
+  object.trigger(eventName);
+});
+
+
+EVENTS-OFF				*backbone-events-off*
+
+object.off([event], [callback], [context])
+
+      object.off([event], [callback], [context])Alias: unbind
+      
+      Remove a previously-bound callback function from an object. If no
+      context is specified, all of the versions of the callback with
+      different contexts will be removed. If no
+      callback is specified, all callbacks for the event will be
+      removed. If no event is specified, all event callbacks on the object
+      will be removed.
+    
+
+// Removes just the `onChange` callback.
+object.off("change", onChange);
+
+// Removes all "change" callbacks.
+object.off("change");
+
+// Removes the `onChange` callback for all events.
+object.off(null, onChange);
+
+// Removes all callbacks for `context` for all events.
+object.off(null, null, context);
+
+// Removes all callbacks on `object`.
+object.off();
+
+
+EVENTS-TRIGGER				*backbone-events-trigger*
+
+object.trigger(event, [*args])
+
+      object.trigger(event, [*args])
+      
+      Trigger callbacks for the given event, or space-delimited list of events.
+      Subsequent arguments to trigger will be passed along to the
+      event callbacks.
+    
+
+MODEL				*backbone-model*
+
+
+      Models are the heart of any JavaScript application, containing
+      the interactive data as well as a large part of the logic surrounding it:
+      conversions, validations, computed properties, and access control. You
+      extend Backbone.Model with your domain-specific methods, and
+      Model provides a basic set of functionality for managing changes.
+    
+
+      The following is a contrived example, but it demonstrates defining a model
+      with a custom method, setting an attribute, and firing an event keyed
+      to changes in that specific attribute.
+      After running this code once, sidebar will be
+      available in your browser's console, so you can play around with it.
+    
+
+var Sidebar = Backbone.Model.extend({
+  promptColor: function() {
+    var cssColor = prompt("Please enter a CSS color:");
+    this.set({color: cssColor});
+  }
+});
+
+window.sidebar = new Sidebar;
+
+sidebar.on('change:color', function(model, color) {
+  $('#sidebar').css({background: color});
+});
+
+sidebar.set({color: 'white'});
+
+sidebar.promptColor();
+
+
+MODEL-EXTEND				*backbone-model-extend*
+
+Backbone.Model.extend(properties, [classProperties])
+
+      Backbone.Model.extend(properties, [classProperties])
+      
+      To create a Model class of your own, you extend Backbone.Model
+      and provide instance properties, as well as optional
+      classProperties to be attached directly to the constructor function.
+    
+
+      extend correctly sets up the prototype chain, so subclasses created
+      with extend can be further extended and subclassed as far as you like.
+    
+
+var Note = Backbone.Model.extend({
+
+  initialize: function() { ... },
+
+  author: function() { ... },
+
+  coordinates: function() { ... },
+
+  allowedToEdit: function(account) {
+    return true;
+  }
+
+});
+
+var PrivateNote = Note.extend({
+
+  allowedToEdit: function(account) {
+    return account.owns(this);
+  }
+
+});
+
+
+        Brief aside on super: JavaScript does not provide
+        a simple way to call super &mdash; the function of the same name defined
+        higher on the prototype chain. If you override a core function like
+        set, or save, and you want to invoke the
+        parent object's implementation, you'll have to explicitly call it, along these lines:
+    
+
+var Note = Backbone.Model.extend({
+  set: function(attributes, options) {
+    Backbone.Model.prototype.set.call(this, attributes, options);
+    ...
+  }
+});
+
+
+MODEL-CONSTRUCTOR				*backbone-model-constructor*
+
+new Model([attributes])
+
+       / initializenew Model([attributes])
+      
+      When creating an instance of a model, you can pass in the initial values
+      of the attributes, which will be set on the
+      model. If you define an initialize function, it will be invoked when
+      the model is created.
+    
+
+new Book({
+  title: "One Thousand and One Nights",
+  author: "Scheherazade"
+});
+
+
+      In rare cases, if you're looking to get fancy,
+      you may want to override constructor, which allows
+      you to replace the actual constructor function for your model.
+    
+
+MODEL-GET				*backbone-model-get*
+
+model.get(attribute)
+
+      model.get(attribute)
+      
+      Get the current value of an attribute from the model. For example:
+      note.get("title")
+    
+
+MODEL-SET				*backbone-model-set*
+
+model.set(attributes, [options])
+
+      model.set(attributes, [options])
+      
+      Set a hash of attributes (one or many) on the model. If any of the attributes
+      change the models state, a "change" event will be triggered, unless
+      {silent: true} is passed as an option. Change events for specific
+      attributes are also triggered, and you can bind to those as well, for example:
+      change:title, and change:content. You may also pass
+      individual keys and values.
+    
+
+note.set({title: "March 20", content: "In his eyes she eclipses..."});
+
+book.set("title", "A Scandal in Bohemia");
+
+
+      If the model has a validate method,
+      it will be validated before the attributes are set, no changes will
+      occur if the validation fails, and set will return false.
+      Otherwise, set returns a reference to the model.
+      You may also pass an error
+      callback in the options, which will be invoked instead of triggering an
+      "error" event, should validation fail.
+      If {silent: true} is passed as an option, the validation is deferred
+      until the next change.
+    
+
+MODEL-ESCAPE				*backbone-model-escape*
+
+model.escape(attribute)
+
+      model.escape(attribute)
+      
+      Similar to get, but returns the HTML-escaped version
+      of a model's attribute. If you're interpolating data from the model into
+      HTML, using escape to retrieve attributes will prevent
+      XSS attacks.
+    
+
+var hacker = new Backbone.Model({
+  name: "<script>alert('xss')</script>"
+});
+
+alert(hacker.escape('name'));
+
+
+MODEL-HAS				*backbone-model-has*
+
+model.has(attribute)
+
+      model.has(attribute)
+      
+      Returns true if the attribute is set to a non-null or non-undefined
+      value.
+    
+
+if (note.has("title")) {
+  ...
+}
+
+
+MODEL-UNSET				*backbone-model-unset*
+
+model.unset(attribute, [options])
+
+      model.unset(attribute, [options])
+      
+      Remove an attribute by deleting it from the internal attributes hash.
+      Fires a "change" event unless silent is passed as an option.
+    
+
+MODEL-CLEAR				*backbone-model-clear*
+
+model.clear([options])
+
+      model.clear([options])
+      
+      Removes all attributes from the model. Fires a "change" event unless
+      silent is passed as an option.
+    
+
+MODEL-ID				*backbone-model-id*
+
+model.id
+
+      model.id
+      
+      A special property of models, the id is an arbitrary string
+      (integer id or UUID). If you set the id in the
+      attributes hash, it will be copied onto the model as a direct property.
+      Models can be retrieved by id from collections, and the id is used to generate
+      model URLs by default.
+    
+
+MODEL-IDATTRIBUTE				*backbone-model-idattribute*
+
+model.idAttribute
+
+var Meal = Backbone.Model.extend({
+  idAttribute: "_id"
+});
+
+var cake = new Meal({ _id: 1, name: "Cake" });
+alert("Cake id: " + cake.id);
+
+
+      model.idAttribute
+      
+      A model's unique identifier is stored under the id attribute.
+      If you're directly communicating with a backend (CouchDB, MongoDB) that uses
+      a different unique key, you may set a Model's idAttribute to
+      transparently map from that key to id.
+
+
+var Meal = Backbone.Model.extend({
+  idAttribute: "_id"
+});
+
+var cake = new Meal({ _id: 1, name: "Cake" });
+alert("Cake id: " + cake.id);
+
+    
+
+MODEL-CID				*backbone-model-cid*
+
+model.cid
+
+      model.cid
+      
+      A special property of models, the cid or client id is a unique identifier
+      automatically assigned to all models when they're first created. Client ids
+      are handy when the model has not yet been saved to the server, and does not
+      yet have its eventual true id, but already needs to be visible in the UI.
+      Client ids take the form: c1, c2, c3 ...
+    
+
+MODEL-ATTRIBUTES				*backbone-model-attributes*
+
+model.attributes
+
+      model.attributes
+      
+      The attributes property is the internal hash containing the model's
+      state. Please use set to update the attributes instead of modifying
+      them directly. If you'd like to retrieve and munge a copy of the model's
+      attributes, use toJSON instead.
+    
+
+MODEL-CHANGED				*backbone-model-changed*
+
+model.changed
+
+      model.changed
+      
+      The changed property is the internal hash containing all the attributes
+      that have changed since the last "change" event was triggered.
+      Please do not update changed directly.  Its state is maintained internally
+      by set and change.
+      A copy of changed can be acquired from
+      changedAttributes.
+    
+
+MODEL-DEFAULTS				*backbone-model-defaults*
+
+model.defaults or model.defaults()
+
+      model.defaults or model.defaults()
+      
+      The defaults hash (or function) can be used to specify the default
+      attributes for your model. When creating an instance of the model,
+      any unspecified attributes will be set to their default value.
+    
+
+var Meal = Backbone.Model.extend({
+  defaults: {
+    "appetizer":  "caesar salad",
+    "entree":     "ravioli",
+    "dessert":    "cheesecake"
+  }
+});
+
+alert("Dessert will be " + (new Meal).get('dessert'));
+
+
+      Remember that in JavaScript, objects are passed by reference, so if you
+      include an object as a default value, it will be shared among all instances.
+    
+
+MODEL-TOJSON				*backbone-model-tojson*
+
+model.toJSON()
+
+      model.toJSON()
+      
+      Return a copy of the model's attributes for JSON stringification.
+      This can be used for persistence, serialization, or for augmentation before
+      being handed off to a view. The name of this method is a bit confusing, as
+      it doesn't actually return a JSON string &mdash; but I'm afraid that it's
+      the way that the JavaScript API for JSON.stringify works.
+    
+
+var artist = new Backbone.Model({
+  firstName: "Wassily",
+  lastName: "Kandinsky"
+});
+
+artist.set({birthday: "December 16, 1866"});
+
+alert(JSON.stringify(artist));
+
+
+MODEL-FETCH				*backbone-model-fetch*
+
+model.fetch([options])
+
+      model.fetch([options])
+      
+      Resets the model's state from the server by delegating to
+      Backbone.sync. Returns a
+      jqXHR.
+      Useful if the model has never
+      been populated with data, or if you'd like to ensure that you have the
+      latest server state. A "change" event will be triggered if the
+      server's state differs from the current attributes. Accepts
+      success and error callbacks in the options hash, which
+      are passed (model, response) as arguments.
+    
+
+// Poll every 10 seconds to keep the channel model up-to-date.
+setInterval(function() {
+  channel.fetch();
+}, 10000);
+
+
+MODEL-SAVE				*backbone-model-save*
+
+model.save([attributes], [options])
+
+      model.save([attributes], [options])
+      
+      Save a model to your database (or alternative persistence layer),
+      by delegating to Backbone.sync.  Returns a
+      jqXHR if
+      validation is successful and false otherwise. The attributes
+      hash (as in set) should contain the attributes
+      you'd like to change &mdash; keys that aren't mentioned won't be altered &mdash; but,
+      a complete representation of the resource will be sent to the server.
+      As with set, you may pass individual keys and values instead of a hash.
+      If the model has a validate
+      method, and validation fails, the model will not be saved. If the model
+      isNew, the save will be a "create"
+      (HTTP POST), if the model already
+      exists on the server, the save will be an "update" (HTTP PUT).
+    
+
+      Calling save with new attributes will cause a "change"
+      event immediately, and a "sync" event after the server has acknowledged
+      the successful change. Pass {wait: true} if you'd like to wait
+      for the server before setting the new attributes on the model.
+    
+
+      In the following example, notice how our overridden version
+      of Backbone.sync receives a "create" request
+      the first time the model is saved and an "update"
+      request the second time.
+    
+
+Backbone.sync = function(method, model) {
+  alert(method + ": " + JSON.stringify(model));
+  model.id = 1;
+};
+
+var book = new Backbone.Model({
+  title: "The Rough Riders",
+  author: "Theodore Roosevelt"
+});
+
+book.save();
+
+book.save({author: "Teddy"});
+
+
+      save accepts success and error callbacks in the
+      options hash, which are passed (model, response) as arguments.
+      The error callback will also be invoked if the model has a
+      validate method, and validation fails. If a server-side
+      validation fails, return a non-200 HTTP response code, along with
+      an error response in text or JSON.
+    
+
+book.save("author", "F.D.R.", {error: function(){ ... }});
+
+
+MODEL-DESTROY				*backbone-model-destroy*
+
+model.destroy([options])
+
+      model.destroy([options])
+      
+      Destroys the model on the server by delegating an HTTP DELETE
+      request to Backbone.sync. Returns a
+      jqXHR object, or
+      false if the model isNew. Accepts
+      success and error callbacks in the options hash.
+      Triggers a "destroy" event on the model, which will bubble up
+      through any collections that contain it, and a "sync" event, after
+      the server has successfully acknowledged the model's deletion. Pass
+      {wait: true} if you'd like to wait for the server to respond
+      before removing the model from the collection.
+    
+
+book.destroy({success: function(model, response) {
+  ...
+}});
+
+
+MODEL-VALIDATE				*backbone-model-validate*
+
+model.validate(attributes)
+
+      model.validate(attributes)
+      
+      This method is left undefined, and you're encouraged to override it with
+      your custom validation logic, if you have any that can be performed
+      in JavaScript. validate is called before set and
+      save, and is passed the model attributes updated with the values
+      from set or save.
+      If the attributes are valid, don't return anything from validate;
+      if they are invalid, return an error of your choosing. It
+      can be as simple as a string error message to be displayed, or a complete
+      error object that describes the error programmatically. If validate
+      returns an error, set and save will not continue, and the
+      model attributes will not be modified.
+      Failed validations trigger an "error" event.
+    
+
+account.set({access: "unlimited"}, {
+  error: function(model, error) {
+    alert(error);
+  }
+});
+
+
+MODEL-ISVALID				*backbone-model-isvalid*
+
+model.isValid()
+
+      model.isValid()
+      
+      Models may enter an invalid state if you make changes to them silently
+      ... useful when dealing with form input. Call model.isValid()
+      to check if the model is currently in a valid state, according to your
+      validate function.
+    
+
+MODEL-URL				*backbone-model-url*
+
+model.url()
+
+      model.url()
+      
+      Returns the relative URL where the model's resource would be located on
+      the server. If your models are located somewhere else, override this method
+      with the correct logic. Generates URLs of the form: "/[collection.url]/[id]",
+      falling back to "/[urlRoot]/id" if the model is not part of a collection.
+    
+
+      Delegates to Collection#url to generate the
+      URL, so make sure that you have it defined, or a urlRoot
+      property, if all models of this class share a common root URL.
+      A model with an id of 101, stored in a
+      Backbone.Collection with a url of "/documents/7/notes",
+      would have this URL: "/documents/7/notes/101"
+    
+
+MODEL-URLROOT				*backbone-model-urlroot*
+
+model.urlRoot or model.urlRoot()
+
+      model.urlRoot or model.urlRoot()
+      
+      Specify a urlRoot if you're using a model outside of a collection,
+      to enable the default url function to generate
+      URLs based on the model id. "/[urlRoot]/id"
+      Note that urlRoot may also be defined as a function.
+    
+
+var Book = Backbone.Model.extend({urlRoot : '/books'});
+
+var solaris = new Book({id: "1083-lem-solaris"});
+
+alert(solaris.url());
+
+
+MODEL-PARSE				*backbone-model-parse*
+
+model.parse(response)
+
+      model.parse(response)
+      
+      parse is called whenever a model's data is returned by the
+      server, in fetch, and save.
+      The function is passed the raw response object, and should return
+      the attributes hash to be set on the model. The
+      default implementation is a no-op, simply passing through the JSON response.
+      Override this if you need to work with a preexisting API, or better namespace
+      your responses.
+    
+
+      If you're working with a Rails backend, you'll notice that Rails' default
+      to_json implementation includes a model's attributes under a
+      namespace. To disable this behavior for seamless Backbone integration, set:
+    
+
+ActiveRecord::Base.include_root_in_json = false
+
+
+MODEL-CLONE				*backbone-model-clone*
+
+model.clone()
+
+      model.clone()
+      
+      Returns a new instance of the model with identical attributes.
+    
+
+MODEL-ISNEW				*backbone-model-isnew*
+
+model.isNew()
+
+      model.isNew()
+      
+      Has this model been saved to the server yet? If the model does not yet have
+      an id, it is considered to be new.
+    
+
+MODEL-CHANGE				*backbone-model-change*
+
+model.change()
+
+      model.change()
+      
+      Manually trigger the "change" event and a "change:attribute"
+      event for each attribute that has changed. If you've been passing
+      {silent: true} to the set function in order to
+      aggregate rapid changes to a model, you'll want to call model.change()
+      when you're all finished.
+    
+
+MODEL-HASCHANGED				*backbone-model-haschanged*
+
+model.hasChanged([attribute])
+
+      model.hasChanged([attribute])
+      
+      Has the model changed since the last "change" event? If an attribute
+      is passed, returns true if that specific attribute has changed.
+    
+
+      Note that this method, and the following change-related ones,
+      are only useful during the course of a "change" event.
+    
+
+book.on("change", function() {
+  if (book.hasChanged("title")) {
+    ...
+  }
+});
+
+
+MODEL-CHANGEDATTRIBUTES				*backbone-model-changedattributes*
+
+model.changedAttributes([attributes])
+
+      model.changedAttributes([attributes])
+      
+      Retrieve a hash of only the model's attributes that have changed. Optionally,
+      an external attributes hash can be passed in, returning
+      the attributes in that hash which differ from the model. This can be used
+      to figure out which portions of a view should be updated, or what calls
+      need to be made to sync the changes to the server.
+    
+
+MODEL-PREVIOUS				*backbone-model-previous*
+
+model.previous(attribute)
+
+      model.previous(attribute)
+      
+      During a "change" event, this method can be used to get the
+      previous value of a changed attribute.
+    
+
+var bill = new Backbone.Model({
+  name: "Bill Smith"
+});
+
+bill.on("change:name", function(model, name) {
+  alert("Changed name from " + bill.previous("name") + " to " + name);
+});
+
+bill.set({name : "Bill Jones"});
+
+
+MODEL-PREVIOUSATTRIBUTES				*backbone-model-previousattributes*
+
+model.previousAttributes()
+
+      model.previousAttributes()
+      
+      Return a copy of the model's previous attributes. Useful for getting a
+      diff between versions of a model, or getting back to a valid state after
+      an error occurs.
+    
+
+COLLECTION				*backbone-collection*
+
+
+      Collections are ordered sets of models. You can bind "change" events
+      to be notified when any model in the collection has been modified,
+      listen for "add" and "remove" events, fetch
+      the collection from the server, and use a full suite of
+      Underscore.js methods.
+    
+
+      Any event that is triggered on a model in a collection will also be
+      triggered on the collection directly, for convenience.
+      This allows you to listen for changes to specific attributes in any
+      model in a collection, for example:
+      Documents.on("change:selected", ...)
+    
+
+COLLECTION-EXTEND				*backbone-collection-extend*
+
+Backbone.Collection.extend(properties, [classProperties])
+
+      Backbone.Collection.extend(properties, [classProperties])
+      
+      To create a Collection class of your own, extend Backbone.Collection,
+      providing instance properties, as well as optional classProperties to be attached
+      directly to the collection's constructor function.
+    
+
+COLLECTION-MODEL				*backbone-collection-model*
+
+collection.model
+
+      collection.model
+      
+      Override this property to specify the model class that the collection
+      contains. If defined, you can pass raw attributes objects (and arrays) to
+      add, create,
+      and reset, and the attributes will be
+      converted into a model of the proper type.
+    
+
+var Library = Backbone.Collection.extend({
+  model: Book
+});
+
+
+COLLECTION-CONSTRUCTOR				*backbone-collection-constructor*
+
+new Collection([models], [options])
+
+       / initializenew Collection([models], [options])
+      
+      When creating a Collection, you may choose to pass in the initial array of models.
+      The collection's comparator function
+      may be included as an option. If you define an initialize function, it will be
+      invoked when the collection is created.
+    
+
+var tabs = new TabSet([tab1, tab2, tab3]);
+
+
+COLLECTION-MODELS				*backbone-collection-models*
+
+collection.models
+
+      collection.models
+      
+      Raw access to the JavaScript array of models inside of the collection. Usually you'll
+      want to use get, at, or the Underscore methods
+      to access model objects, but occasionally a direct reference to the array
+      is desired.
+    
+
+COLLECTION-TOJSON				*backbone-collection-tojson*
+
+collection.toJSON()
+
+      collection.toJSON()
+      
+      Return an array containing the attributes hash of each model in the
+      collection. This can be used to serialize and persist the
+      collection as a whole. The name of this method is a bit confusing, because
+      it conforms to
+      JavaScript's JSON API.
+    
+
+var collection = new Backbone.Collection([
+  {name: "Tim", age: 5},
+  {name: "Ida", age: 26},
+  {name: "Rob", age: 55}
+]);
+
+alert(JSON.stringify(collection));
+
+
+COLLECTION-UNDERSCORE-METHODS				*backbone-collection-underscore-methods*
+
+
+       Methods (28)
+      
+      Backbone proxies to Underscore.js to provide 28 iteration functions
+      on Backbone.Collection. They aren't all documented here, but
+      you can take a look at the Underscore documentation for the full details&hellip;
+    
+
+Books.each(function(book) {
+  book.publish();
+});
+
+var titles = Books.map(function(book) {
+  return book.get("title");
+});
+
+var publishedBooks = Books.filter(function(book) {
+  return book.get("published") === true;
+});
+
+var alphabetical = Books.sortBy(function(book) {
+  return book.author.get("name").toLowerCase();
+});
+
+
+COLLECTION-ADD				*backbone-collection-add*
+
+collection.add(models, [options])
+
+      collection.add(models, [options])
+      
+      Add a model (or an array of models) to the collection. Fires an "add"
+      event, which you can pass {silent: true} to suppress. If a
+      model property is defined, you may also pass
+      raw attributes objects, and have them be vivified as instances of the model.
+      Pass {at: index} to splice the model into the collection at the
+      specified index. Likewise, if you're a callback listening to a
+      collection's "add" event, options.index will tell you the
+      index at which the model is being added to the collection.
+    
+
+var ships = new Backbone.Collection;
+
+ships.on("add", function(ship) {
+  alert("Ahoy " + ship.get("name") + "!");
+});
+
+ships.add([
+  {name: "Flying Dutchman"},
+  {name: "Black Pearl"}
+]);
+
+
+COLLECTION-REMOVE				*backbone-collection-remove*
+
+collection.remove(models, [options])
+
+      collection.remove(models, [options])
+      
+      Remove a model (or an array of models) from the collection. Fires a
+      "remove" event, which you can use silent
+      to suppress. If you're a callback listening to the "remove" event,
+      the index at which the model is being removed from the collection is available
+      as options.index.
+    
+
+COLLECTION-GET				*backbone-collection-get*
+
+collection.get(id)
+
+      collection.get(id)
+      
+      Get a model from a collection, specified by id.
+    
+
+var book = Library.get(110);
+
+
+COLLECTION-GETBYCID				*backbone-collection-getbycid*
+
+collection.getByCid(cid)
+
+      collection.getByCid(cid)
+      
+      Get a model from a collection, specified by client id. The client id
+      is the .cid property of the model, automatically assigned whenever
+      a model is created. Useful for models which have not yet been saved to
+      the server, and do not yet have true ids.
+    
+
+COLLECTION-AT				*backbone-collection-at*
+
+collection.at(index)
+
+      collection.at(index)
+      
+      Get a model from a collection, specified by index. Useful if your collection
+      is sorted, and if your collection isn't sorted, at will still
+      retrieve models in insertion order.
+    
+
+COLLECTION-PUSH				*backbone-collection-push*
+
+collection.push(model, [options])
+
+      collection.push(model, [options])
+      
+      Add a model at the end of a collection. Takes the same options as
+      add.
+    
+
+COLLECTION-POP				*backbone-collection-pop*
+
+collection.pop([options])
+
+      collection.pop([options])
+      
+      Remove and return the last model from a collection. Takes the same options as
+      remove.
+    
+
+COLLECTION-UNSHIFT				*backbone-collection-unshift*
+
+collection.unshift(model, [options])
+
+      collection.unshift(model, [options])
+      
+      Add a model at the beginning of a collection. Takes the same options as
+      add.
+    
+
+COLLECTION-SHIFT				*backbone-collection-shift*
+
+collection.shift([options])
+
+      collection.shift([options])
+      
+      Remove and return the first model from a collection. Takes the same options as
+      remove.
+    
+
+COLLECTION-LENGTH				*backbone-collection-length*
+
+collection.length
+
+      collection.length
+      
+      Like an array, a Collection maintains a length property, counting
+      the number of models it contains.
+    
+
+COLLECTION-COMPARATOR				*backbone-collection-comparator*
+
+collection.comparator
+
+      collection.comparator
+      
+      By default there is no comparator function on a collection.
+      If you define a comparator, it will be used to maintain
+      the collection in sorted order. This means that as models are added,
+      they are inserted at the correct index in collection.models.
+      Comparator function can be defined as either a
+      sortBy
+      (pass a function that takes a single argument),
+      or as a
+      sort
+      (pass a comparator function that expects two arguments).
+    
+
+      "sortBy" comparator functions take a model and return a numeric or string
+      value by which the model should be ordered relative to others.
+      "sort" comparator functions take two models, and return -1 if
+      the first model should come before the second, 0 if they are of
+      the same rank and 1 if the first model should come after.
+    
+
+      Note how even though all of the chapters in this example are added backwards,
+      they come out in the proper order:
+    
+
+var Chapter  = Backbone.Model;
+var chapters = new Backbone.Collection;
+
+chapters.comparator = function(chapter) {
+  return chapter.get("page");
+};
+
+chapters.add(new Chapter({page: 9, title: "The End"}));
+chapters.add(new Chapter({page: 5, title: "The Middle"}));
+chapters.add(new Chapter({page: 1, title: "The Beginning"}));
+
+alert(chapters.pluck('title'));
+
+
+      Collections with comparator functions will not automatically re-sort if you
+      later change model attributes, so you may wish to call sort after
+      changing model attributes that would affect the order.
+    
+
+COLLECTION-SORT				*backbone-collection-sort*
+
+collection.sort([options])
+
+      collection.sort([options])
+      
+      Force a collection to re-sort itself. You don't need to call this under
+      normal circumstances, as a collection with a comparator function
+      will maintain itself in proper sort order at all times. Calling sort
+      triggers the collection's "reset" event, unless silenced by passing
+      {silent: true}
+    
+
+COLLECTION-PLUCK				*backbone-collection-pluck*
+
+collection.pluck(attribute)
+
+      collection.pluck(attribute)
+      
+      Pluck an attribute from each model in the collection. Equivalent to calling
+      map, and returning a single attribute from the iterator.
+    
+
+var stooges = new Backbone.Collection([
+  {name: "Curly"},
+  {name: "Larry"},
+  {name: "Moe"}
+]);
+
+var names = stooges.pluck("name");
+
+alert(JSON.stringify(names));
+
+
+COLLECTION-WHERE				*backbone-collection-where*
+
+collection.where(attributes)
+
+      collection.where(attributes)
+      
+      Return an array of all the models in a collection that match the
+      passed attributes. Useful for simple cases of filter.
+    
+
+var friends = new Backbone.Collection([
+  {name: "Athos",      job: "Musketeer"},
+  {name: "Porthos",    job: "Musketeer"},
+  {name: "Aramis",     job: "Musketeer"},
+  {name: "d'Artagnan", job: "Guard"},
+]);
+
+var musketeers = friends.where({job: "Musketeer"});
+
+alert(musketeers.length);
+
+
+COLLECTION-URL				*backbone-collection-url*
+
+collection.url or collection.url()
+
+      collection.url or collection.url()
+      
+      Set the url property (or function) on a collection to reference
+      its location on the server. Models within the collection will use url
+      to construct URLs of their own.
+    
+
+var Notes = Backbone.Collection.extend({
+  url: '/notes'
+});
+
+// Or, something more sophisticated:
+
+var Notes = Backbone.Collection.extend({
+  url: function() {
+    return this.document.url() + '/notes';
+  }
+});
+
+
+COLLECTION-PARSE				*backbone-collection-parse*
+
+collection.parse(response)
+
+      collection.parse(response)
+      
+      parse is called by Backbone whenever a collection's models are
+      returned by the server, in fetch.
+      The function is passed the raw response object, and should return
+      the array of model attributes to be added
+      to the collection. The default implementation is a no-op, simply passing
+      through the JSON response. Override this if you need to work with a
+      preexisting API, or better namespace your responses. Note that afterwards,
+      if your model class already has a parse function, it will be
+      run against each fetched model.
+    
+
+var Tweets = Backbone.Collection.extend({
+  // The Twitter Search API returns tweets under "results".
+  parse: function(response) {
+    return response.results;
+  }
+});
+
+
+COLLECTION-FETCH				*backbone-collection-fetch*
+
+collection.fetch([options])
+
+      collection.fetch([options])
+      
+      Fetch the default set of models for this collection from the server,
+      resetting the collection when they arrive. The options hash takes
+      success and error
+      callbacks which will be passed (collection, response) as arguments.
+      When the model data returns from the server, the collection will
+      reset.
+      Delegates to Backbone.sync
+      under the covers for custom persistence strategies and returns a
+      jqXHR.
+      The server handler for fetch requests should return a JSON array of
+      models.
+    
+
+Backbone.sync = function(method, model) {
+  alert(method + ": " + model.url);
+};
+
+var Accounts = new Backbone.Collection;
+Accounts.url = '/accounts';
+
+Accounts.fetch();
+
+
+      If you'd like to add the incoming models to the current collection, instead
+      of replacing the collection's contents, pass {add: true} as an
+      option to fetch.
+    
+
+      jQuery.ajax options can also be passed directly as fetch options,
+      so to fetch a specific page of a paginated collection:
+      Documents.fetch({data: {page: 3}})
+    
+
+      Note that fetch should not be used to populate collections on
+      page load &mdash; all models needed at load time should already be
+      bootstrapped in to place. fetch is
+      intended for lazily-loading models for interfaces that are not needed
+      immediately: for example, documents with collections of notes that may be
+      toggled open and closed.
+    
+
+COLLECTION-RESET				*backbone-collection-reset*
+
+collection.reset(models, [options])
+
+      collection.reset(models, [options])
+      
+      Adding and removing models one at a time is all well and good, but sometimes
+      you have so many models to change that you'd rather just update the collection
+      in bulk. Use reset to replace a collection with a new list
+      of models (or attribute hashes), triggering a single "reset" event
+      at the end. Pass {silent: true} to suppress the "reset" event.
+      Using reset with no arguments is useful as a way to empty the collection.
+    
+
+      Here's an example using reset to bootstrap a collection during initial page load,
+      in a Rails application.
+    
+
+<script>
+  var Accounts = new Backbone.Collection;
+  Accounts.reset(<%= @accounts.to_json %>);
+</script>
+
+
+      Calling collection.reset() without passing any models as arguments
+      will empty the entire collection.
+    
+
+COLLECTION-CREATE				*backbone-collection-create*
+
+collection.create(attributes, [options])
+
+      collection.create(attributes, [options])
+      
+      Convenience to create a new instance of a model within a collection.
+      Equivalent to instantiating a model with a hash of attributes,
+      saving the model to the server, and adding the model to the set after being
+      successfully created. Returns
+      the model, or false if a validation error prevented the
+      model from being created. In order for this to work, you should set the
+      model property of the collection.
+      The create method can accept either an attributes hash or an
+      existing, unsaved model object.
+    
+
+      Creating a model will cause an immediate "add" event to be
+      triggered on the collection, as well as a "sync" event, once the
+      model has been successfully created on the server. Pass {wait: true}
+      if you'd like to wait for the server before adding the new model to the collection.
+    
+
+var Library = Backbone.Collection.extend({
+  model: Book
+});
+
+var NYPL = new Library;
+
+var othello = NYPL.create({
+  title: "Othello",
+  author: "William Shakespeare"
+});
+
+
+ROUTER				*backbone-router*
+
+
+      Web applications often provide linkable, bookmarkable, shareable URLs for
+      important locations in the app. Until recently, hash fragments
+      (#page) were used to provide these permalinks, but with the
+      arrival of the History API, it's now possible to use standard URLs (/page).
+      Backbone.Router provides methods for routing client-side pages, and
+      connecting them to actions and events. For browsers which don't yet support
+      the History API, the Router handles graceful fallback and transparent
+      translation to the fragment version of the URL.
+    
+
+      During page load, after your application has finished creating all of its routers,
+      be sure to call Backbone.history.start(), or
+      Backbone.history.start({pushState: true}) to route the initial URL.
+    
+
+ROUTER-EXTEND				*backbone-router-extend*
+
+Backbone.Router.extend(properties, [classProperties])
+
+      Backbone.Router.extend(properties, [classProperties])
+      
+      Get started by creating a custom router class. Define actions that are
+      triggered when certain URL fragments are
+      matched, and provide a routes hash
+      that pairs routes to actions. Note that you'll want to avoid using a
+      leading slash in your route definitions:
+    
+
+var Workspace = Backbone.Router.extend({
+
+  routes: {
+    "help":                 "help",    // #help
+    "search/:query":        "search",  // #search/kiwis
+    "search/:query/p:page": "search"   // #search/kiwis/p7
+  },
+
+  help: function() {
+    ...
+  },
+
+  search: function(query, page) {
+    ...
+  }
+
+});
+
+
+ROUTER-ROUTES				*backbone-router-routes*
+
+router.routes
+
+      router.routes
+      
+      The routes hash maps URLs with parameters to functions on your router,
+      similar to the View's events hash.
+      Routes can contain parameter parts, :param, which match a single URL
+      component between slashes; and splat parts *splat, which can match
+      any number of URL components.
+    
+
+      For example, a route of "search/:query/p:page" will match
+      a fragment of #search/obama/p2, passing "obama"
+      and "2" to the action. A route of "file/*path" will
+      match #file/nested/folder/file.txt,
+      passing "nested/folder/file.txt" to the action.
+    
+
+      When the visitor presses the back button, or enters a URL, and a particular
+      route is matched, the name of the action will be fired as an
+      event, so that other objects can listen to the router,
+      and be notified. In the following example, visiting #help/uploading
+      will fire a route:help event from the router.
+    
+
+routes: {
+  "help/:page":         "help",
+  "download/*path":     "download",
+  "folder/:name":       "openFolder",
+  "folder/:name-:mode": "openFolder"
+}
+
+
+router.on("route:help", function(page) {
+  ...
+});
+
+
+ROUTER-CONSTRUCTOR				*backbone-router-constructor*
+
+new Router([options])
+
+       / initializenew Router([options])
+      
+      When creating a new router, you may pass its
+      routes hash directly as an option, if you
+      choose. All options will also be passed to your initialize
+      function, if defined.
+    
+
+ROUTER-ROUTE				*backbone-router-route*
+
+router.route(route, name, [callback])
+
+      router.route(route, name, [callback])
+      
+      Manually create a route for the router, The route argument may
+      be a routing string or regular expression.
+      Each matching capture from the route or regular expression will be passed as
+      an argument to the callback. The name argument will be triggered as
+      a "route:name" event whenever the route is matched.  If the
+      callback argument is omitted router[name] will be used
+      instead.
+    
+
+initialize: function(options) {
+
+  // Matches #page/10, passing "10"
+  this.route("page/:number", "page", function(number){ ... });
+
+  // Matches /117-a/b/c/open, passing "117-a/b/c" to this.open
+  this.route(/^(.*?)\/open$/, "open");
+
+},
+
+open: function(id) { ... }
+
+
+ROUTER-NAVIGATE				*backbone-router-navigate*
+
+router.navigate(fragment, [options])
+
+      router.navigate(fragment, [options])
+      
+      Whenever you reach a point in your application that you'd like to save
+      as a URL, call navigate in order to update the URL.
+      If you wish to also call the route function, set the trigger
+      option to true.
+      To update the URL without creating an entry in the browser's history,
+      set the replace option to true.
+    
+
+openPage: function(pageNumber) {
+  this.document.pages.at(pageNumber).open();
+  this.navigate("page/" + pageNumber);
+}
+
+# Or ...
+
+app.navigate("help/troubleshooting", {trigger: true});
+
+# Or ...
+
+app.navigate("help/troubleshooting", {trigger: true, replace: true});
+
+
+HISTORY				*backbone-history*
+
+
+      History serves as a global router (per frame) to handle hashchange
+      events or pushState, match the appropriate route, and trigger callbacks. You shouldn't
+      ever have to create one of these yourself &mdash; you should use the reference
+      to Backbone.history that will be created for you automatically if you make use
+      of Routers with routes.
+    
+
+      pushState support exists on a purely opt-in basis in Backbone.
+      Older browsers that don't support pushState will continue to use
+      hash-based URL fragments, and if a hash URL is visited by a
+      pushState-capable browser, it will be transparently upgraded to
+      the true URL. Note that using real URLs requires your web server to be
+      able to correctly render those pages, so back-end changes are required
+      as well. For example, if you have a route of /documents/100,
+      your web server must be able to serve that page, if the browser
+      visits that URL directly. For full search-engine crawlability, it's best to
+      have the server generate the complete HTML for the page ... but if it's a web
+      application, just rendering the same content you would have for the root URL,
+      and filling in the rest with Backbone Views and JavaScript works fine.
+    
+
+HISTORY-START				*backbone-history-start*
+
+Backbone.history.start([options])
+
+      Backbone.history.start([options])
+      
+      When all of your Routers have been created,
+      and all of the routes are set up properly, call Backbone.history.start()
+      to begin monitoring hashchange events, and dispatching routes.
+    
+
+      To indicate that you'd like to use HTML5 pushState support in
+      your application, use Backbone.history.start({pushState: true}).
+    
+
+      If your application is not being served from the root url / of your
+      domain, be sure to tell History where the root really is, as an option:
+      Backbone.history.start({pushState: true, root: "/public/search/"})
+    
+
+      When called, if a route succeeds with a match for the current URL,
+      Backbone.history.start() returns true. If no defined
+      route matches the current URL, it returns false.
+    
+
+      If the server has already rendered the entire page, and you don't want the
+      initial route to trigger when starting History, pass silent: true.
+    
+
+      Because hash-based history in Internet Explorer relies on an
+      <iframe>, be sure to only call start() after the DOM
+      is ready.
+    
+
+$(function(){
+  new WorkspaceRouter();
+  new HelpPaneRouter();
+  Backbone.history.start({pushState: true});
+});
+
+
+SYNC				*backbone-sync*
+
+
+      Backbone.sync is the function that Backbone calls every time it
+      attempts to read or save a model to the server. By default, it uses
+      (jQuery/Zepto).ajax to make a RESTful JSON request and returns a
+      jqXHR. You can override
+      it in order to use a different persistence strategy, such as WebSockets,
+      XML transport, or Local Storage.
+    
+
+      The method signature of Backbone.sync is sync(method, model, [options])
+    
+
+      With the default implementation, when Backbone.sync sends up a request to save
+      a model, its attributes will be passed, serialized as JSON, and sent in the HTTP body
+      with content-type application/json. When returning a JSON response,
+      send down the attributes of the  model that have been changed by the server, and need
+      to be updated on the client. When responding to a "read" request from a collection
+      (Collection#fetch), send down an array
+      of model attribute objects.
+    
+
+      The sync function may be overriden globally as Backbone.sync,
+      or at a finer-grained level, by adding a sync function to a Backbone
+      collection or to an individual model.
+    
+
+      The default sync handler maps CRUD to REST like so:
+    
+
+      As an example, a Rails handler responding to an "update" call from
+      Backbone might look like this: (In real code, never use
+      update_attributes blindly, and always whitelist the attributes
+      you allow to be changed.)
+    
+
+def update
+  account = Account.find params[:id]
+  account.update_attributes params
+  render :json => account
+end
+
+
+      One more tip for Rails integration is to disable the default namespacing for
+      to_json calls on models by setting ActiveRecord::Base.include_root_in_json = false
+    
+
+SYNC-EMULATEHTTP				*backbone-sync-emulatehttp*
+
+Backbone.emulateHTTP = true
+
+      Backbone.emulateHTTP = true
+      
+      If you want to work with a legacy web server that doesn't support Backbones's
+      default REST/HTTP approach, you may choose to turn on Backbone.emulateHTTP.
+      Setting this option will fake PUT and DELETE requests with
+      a HTTP POST, setting the X-HTTP-Method-Override header
+      with the true method. If emulateJSON is also on, the true method
+      will be passed as an additional _method parameter.
+    
+
+Backbone.emulateHTTP = true;
+
+model.save();  // POST to "/collection/id", with "_method=PUT" + header.
+
+
+SYNC-EMULATEJSON				*backbone-sync-emulatejson*
+
+Backbone.emulateJSON = true
+
+      Backbone.emulateJSON = true
+      
+      If you're working with a legacy web server that can't handle requests
+      encoded as application/json, setting Backbone.emulateJSON = true;
+      will cause the JSON to be serialized under a model parameter, and
+      the request to be made with a application/x-www-form-urlencoded
+      mime type, as if from an HTML form.
+    
+
+VIEW				*backbone-view*
+
+
+      Backbone views are almost more convention than they are code &mdash; they
+      don't determine anything about your HTML or CSS for you, and can be used
+      with any JavaScript templating library.
+      The general idea is to organize your interface into logical views,
+      backed by models, each of which can be updated independently when the
+      model changes, without having to redraw the page. Instead of digging into
+      a JSON object, looking up an element in the DOM, and updating the HTML by hand,
+      you can bind your view's render function to the model's "change"
+      event &mdash; and now everywhere that
+      model data is displayed in the UI, it is always immediately up to date.
+    
+
+VIEW-EXTEND				*backbone-view-extend*
+
+Backbone.View.extend(properties, [classProperties])
+
+      Backbone.View.extend(properties, [classProperties])
+      
+      Get started with views by creating a custom view class. You'll want to
+      override the render function, specify your
+      declarative events, and perhaps the
+      tagName, className, or id of the View's root
+      element.
+    
+
+var DocumentRow = Backbone.View.extend({
+
+  tagName: "li",
+
+  className: "document-row",
+
+  events: {
+    "click .icon":          "open",
+    "click .button.edit":   "openEditDialog",
+    "click .button.delete": "destroy"
+  },
+
+  render: function() {
+    ...
+  }
+
+});
+
+
+VIEW-CONSTRUCTOR				*backbone-view-constructor*
+
+new View([options])
+
+       / initializenew View([options])
+      
+      When creating a new View, the options you pass are attached to the view
+      as this.options, for future reference. There are several special
+      options that, if passed, will be attached directly to the view:
+      model, collection,
+      el, id, className, tagName and attributes.
+      If the view defines an initialize function, it will be called when
+      the view is first created. If you'd like to create a view that references
+      an element already in the DOM, pass in the element as an option:
+      new View({el: existingElement})
+    
+
+var doc = Documents.first();
+
+new DocumentRow({
+  model: doc,
+  id: "document-row-" + doc.id
+});
+
+
+VIEW-EL				*backbone-view-el*
+
+view.el
+
+      view.el
+      
+      All views have a DOM element at all times (the el property),
+      whether they've already been inserted into the page or not. In this
+      fashion, views can be rendered at any time, and inserted into the DOM all
+      at once, in order to get high-performance UI rendering with as few
+      reflows and repaints as possible. this.el is created from the
+      view's tagName, className, id and attributes properties,
+      if specified. If not, el is an empty div.
+    
+
+var ItemView = Backbone.View.extend({
+  tagName: 'li'
+});
+
+var BodyView = Backbone.View.extend({
+  el: 'body'
+});
+
+var item = new ItemView();
+var body = new BodyView();
+
+alert(item.el + ' ' + body.el);
+
+
+VIEW-$EL				*backbone-view-el*
+
+view.$el
+
+      view.$el
+      
+      A cached jQuery (or Zepto) object for the view's element. A handy
+      reference instead of re-wrapping the DOM element all the time.
+    
+
+view.$el.show();
+
+listView.$el.append(itemView.el);
+
+
+VIEW-SETELEMENT				*backbone-view-setelement*
+
+view.setElement(element)
+
+      view.setElement(element)
+      
+      If you'd like to apply a Backbone view to a different DOM element, use
+      setElement, which will also create the cached $el reference
+      and move the view's delegated events from the old element to the new one.
+    
+
+VIEW-ATTRIBUTES				*backbone-view-attributes*
+
+view.attributes
+
+      view.attributes
+      
+      A hash of attributes that will be set as HTML DOM element attributes on the
+      view's el (id, class, data-properties, etc.), or a function that
+      returns such a hash.
+    
+
+VIEW-DOLLAR				*backbone-view-dollar*
+
+view.$(selector)
+
+      $ (jQuery or Zepto)view.$(selector)
+      
+      If jQuery or Zepto is included on the page, each view has a
+      $ function that runs queries scoped within the view's element. If you use this
+      scoped jQuery function, you don't have to use model ids as part of your query
+      to pull out specific elements in a list, and can rely much more on HTML class
+      attributes. It's equivalent to running: view.$el.find(selector)
+    
+
+ui.Chapter = Backbone.View.extend({
+  serialize : function() {
+    return {
+      title: this.$(".title").text(),
+      start: this.$(".start-page").text(),
+      end:   this.$(".end-page").text()
+    };
+  }
+});
+
+
+VIEW-RENDER				*backbone-view-render*
+
+view.render()
+
+      view.render()
+      
+      The default implementation of render is a no-op. Override this
+      function with your code that renders the view template from model data,
+      and updates this.el with the new HTML. A good
+      convention is to return this at the end of render to
+      enable chained calls.
+    
+
+var Bookmark = Backbone.View.extend({
+  render: function() {
+    $(this.el).html(this.template(this.model.toJSON()));
+    return this;
+  }
+});
+
+
+      Backbone is agnostic with respect to your preferred method of HTML templating.
+      Your render function could even munge together an HTML string, or use
+      document.createElement to generate a DOM tree. However, we suggest
+      choosing a nice JavaScript templating library.
+      Mustache.js,
+      Haml-js, and
+      Eco are all fine alternatives.
+      Because Underscore.js is already on the page,
+      _.template
+      is available, and is an excellent choice if you've already XSS-sanitized
+      your interpolated data.
+    
+
+      Whatever templating strategy you end up with, it's nice if you never
+      have to put strings of HTML in your JavaScript. At DocumentCloud, we
+      use Jammit in order
+      to package up JavaScript templates stored in /app/views as part
+      of our main core.js asset package.
+    
+
+VIEW-REMOVE				*backbone-view-remove*
+
+view.remove()
+
+      view.remove()
+      
+      Convenience function for removing the view from the DOM. Equivalent to calling
+      $(view.el).remove();
+    
+
+VIEW-MAKE				*backbone-view-make*
+
+view.make(tagName, [attributes], [content])
+
+      view.make(tagName, [attributes], [content])
+      
+      Convenience function for creating a DOM element of the given type (tagName),
+      with optional attributes and HTML content. Used internally to create the
+      initial view.el.
+    
+
+var view = new Backbone.View;
+
+var el = view.make("b", {"class": "bold"}, "Bold! ");
+
+$("#make-demo").append(el);
+
+
+MAKE-DEMO				*backbone-make-demo*
+
+
+VIEW-DELEGATEEVENTS				*backbone-view-delegateevents*
+
+delegateEvents([events])
+
+      delegateEvents([events])
+      
+      Uses jQuery's delegate function to provide declarative callbacks
+      for DOM events within a view.
+      If an events hash is not passed directly, uses this.events
+      as the source. Events are written in the format {"event selector": "callback"}.
+      The callback may be either the name of a method on the view, or a direct
+      function body.
+      Omitting the selector causes the event to be bound to the view's
+      root element (this.el). By default, delegateEvents is called
+      within the View's constructor for you, so if you have a simple events
+      hash, all of your DOM events will always already be connected, and you will
+      never have to call this function yourself.
+    
+
+      The events property may also be defined as a function that returns
+      an events hash, to make it easier to programmatically define your
+      events, as well as inherit them from parent views.
+    
+
+      Using delegateEvents provides a number of advantages over manually
+      using jQuery to bind events to child elements during render. All attached
+      callbacks are bound to the view before being handed off to jQuery, so when
+      the callbacks are invoked, this continues to refer to the view object. When
+      delegateEvents is run again, perhaps with a different events
+      hash, all callbacks are removed and delegated afresh &mdash; useful for
+      views which need to behave differently when in different modes.
+    
+
+      A view that displays a document in a search result might look
+      something like this:
+    
+
+var DocumentView = Backbone.View.extend({
+
+  events: {
+    "dblclick"                : "open",
+    "click .icon.doc"         : "select",
+    "contextmenu .icon.doc"   : "showMenu",
+    "click .show_notes"       : "toggleNotes",
+    "click .title .lock"      : "editAccessLevel",
+    "mouseover .title .date"  : "showTooltip"
+  },
+
+  render: function() {
+    $(this.el).html(this.template(this.model.toJSON()));
+    return this;
+  },
+
+  open: function() {
+    window.open(this.model.get("viewer_url"));
+  },
+
+  select: function() {
+    this.model.set({selected: true});
+  },
+
+  ...
+
+});
+
+
+VIEW-UNDELEGATEEVENTS				*backbone-view-undelegateevents*
+
+undelegateEvents()
+
+      undelegateEvents()
+      
+      Removes all of the view's delegated events. Useful if you want to disable
+      or remove a view from the DOM temporarily.
+    
+
+UTILITY				*backbone-utility*
+
+
+UTILITY-NOCONFLICT				*backbone-utility-noconflict*
+
+var backbone = Backbone.noConflict();
+
+      var backbone = Backbone.noConflict();
+      
+      Returns the Backbone object back to its original value. You can
+      use the return value of Backbone.noConflict() to keep a local
+      reference to Backbone. Useful for embedding Backbone on third-party
+      websites, where you don't want to clobber the existing Backbone.
+    
+
+var localBackbone = Backbone.noConflict();
+var model = localBackbone.Model.extend(...);
+
+
+UTILITY-SETDOMLIBRARY				*backbone-utility-setdomlibrary*
+
+Backbone.setDomLibrary(jQueryNew);
+
+      Backbone.setDomLibrary(jQueryNew);
+      
+      If you have multiple copies of jQuery on the page, or simply want
+      to tell Backbone to use a particular object as its DOM / Ajax library,
+      this is the function for you.
+    
+
+EXAMPLES				*backbone-examples*
+
+
+      The list of examples that follows, while long, is not exhaustive. If you've
+      worked on an app that uses Backbone, please add it to the
+      wiki page of Backbone apps.
+    
+
+EXAMPLES-TODOS				*backbone-examples-todos*
+
+
+      Jérôme Gravel-Niquet has contributed a
+      Todo List application
+      that is bundled in the repository as Backbone example. If you're wondering
+      where to get started with Backbone in general, take a moment to
+      read through the annotated source. The app uses a
+      LocalStorage adapter
+      to transparently save all of your  within your browser, instead of
+      sending them to a server. Jérôme also has a version hosted at
+      localtodos.com that uses a
+      MooTools-backed version of Backbone
+      instead of jQuery.
+    
+
+EXAMPLES-DOCUMENTCLOUD				*backbone-examples-documentcloud*
+
+
+      The DocumentCloud workspace
+      is built on Backbone.js, with Documents, Projects,
+      Notes, and Accounts all as Backbone models and collections.
+      If you're interested in history &mdash; both Underscore.js and Backbone.js
+      were originally extracted from the DocumentCloud codebase, and packaged
+      into standalone JS libraries.
+    
+
+EXAMPLES-RDIO				*backbone-examples-rdio*
+
+
+      New Rdio was developed from the ground 
+      up with a component based framework based on Backbone.js. Every component 
+      on the screen is dynamically loaded and rendered, with data provided by the 
+      Rdio API. When changes are pushed, 
+      every component can update itself without reloading the page or interrupting 
+      the user's music. All of this relies on Backbone's views and models, 
+      and all URL routing is handled by Backbone's Router. When data changes are 
+      signaled in realtime, Backbone's Events notify the interested components 
+      in the data changes. Backbone forms the core of the new, dynamic, realtime 
+      Rdio web and desktop applications.
+    
+
+EXAMPLES-LINKEDIN				*backbone-examples-linkedin*
+
+
+      LinkedIn used Backbone.js to create
+      its next-generation HTML5 mobile web app.
+      Backbone made it easy to keep the app modular, organized and extensible so
+      that it was possible to program the complexities of LinkedIn's user experience.
+      The app also uses Zepto,
+      Underscore.js,
+      SASS, iScroll,
+      HTML5 LocalStorage and Canvas.
+    
+
+EXAMPLES-FLOW				*backbone-examples-flow*
+
+
+      MetaLab used Backbone.js to create
+      Flow, a task management app for teams. The
+      workspace relies on Backbone.js to construct task views, activities, accounts,
+      folders, projects, and tags. You can see the internals under window.Flow.
+    
+
+EXAMPLES-AUDIOVROOM				*backbone-examples-audiovroom*
+
+
+      AudioVroom is a free music
+      streaming app that allows you to listen to your Facebook friends like
+      radio stations. It relies heavily on Backbone (views and song management)
+      and also features a responsive grid-based design (using CSS3 media-queries)
+      to deliver a unified user experience on desktops, mobiles, and tablets alike.
+      Being a pure Backbone app, AudioVroom is only 60kb compressed, and can be
+      entirely hosted on the CDN.
+    
+
+EXAMPLES-FOURSQUARE				*backbone-examples-foursquare*
+
+
+      Foursquare is a fun little startup that helps you meet up with friends,
+      discover new places, and save money. Backbone Models are heavily used in
+      the core JavaScript API layer and Views power many popular features like
+      the homepage map and
+      lists.
+    
+
+EXAMPLES-WUNDERKIT				*backbone-examples-wunderkit*
+
+
+      Wunderkit is a productivity and
+      social collaboration platform. It
+      uses Backbone.js as the foundation for the single-page application,
+      which is backed by a RESTful Rails API.
+      The freedom and agility that Backbone gives to developers
+      made it possible to build Wunderkit in a very short time and
+      extend it with custom features: a write-through cache using HTML5
+      localStorage, and a view hierarchy extension to easily manage trees of
+      sub-views. Aside from Backbone, Wunderkit also
+      depends on jQuery, Underscore, Require.js, LESS and doT.js templates.
+    
+
+EXAMPLES-KHAN-ACADEMY				*backbone-examples-khan-academy*
+
+
+      Khan Academy is on a mission to
+      provide a free world-class education to anyone anywhere. With thousands of
+      videos, hundreds of JavaScript-driven exercises, and big plans for the
+      future, Khan Academy uses Backbone to keep frontend code modular and organized.
+      User profiles
+      and goal setting
+      are implemented with Backbone, jQuery and Handlebars, and most new feature
+      work is being pushed to the client side, greatly increasing the quality of
+      the API.
+    
+
+EXAMPLES-DO				*backbone-examples-do*
+
+
+      Do is a social productivity app that makes it
+      easy to work on tasks, track projects, and take notes with your team.
+      The Do.com web application was built from the
+      ground up to work seamlessly on your smartphone, tablet and computer. The
+      team used Backbone, CoffeeScript and Handlebars to build a full-featured
+      app in record time and rolled their own extensions for complex navigation
+      and model sync support.
+    
+
+EXAMPLES-POSTEROUS				*backbone-examples-posterous*
+
+
+      Posterous Spaces is
+      built on Backbone.
+      The models and collections mirror the public
+      Posterous API. Backbone made it easy
+      for the team to create a JavaScript-heavy application with complex
+      interactions and state maintenance. Spaces also uses CoffeeScript,
+      Underscore.js, Haml.js, Sass, Compass, and of course jQuery.
+    
+
+EXAMPLES-PITCHFORK				*backbone-examples-pitchfork*
+
+
+      Pitchfork uses Backbone.js to power 
+      its site-wide audio player, Pitchfork.tv, 
+      location routing, a write-thru page fragment cache, and more. Backbone.js 
+      (and Underscore.js) helps the team 
+      create clean and modular components, 
+      move very quickly, and focus on the site, not the spaghetti.
+    
+
+EXAMPLES-GROUPON				*backbone-examples-groupon*
+
+
+      Groupon Now! helps you find
+      local deals that you can buy and use right now. When first developing
+      the product, the team decided it would be AJAX heavy with smooth transitions
+      between sections instead of full refreshes, but still needed to be fully
+      linkable and shareable. Despite never having used Backbone before, the
+      learning curve was incredibly quick &mdash; a prototype was hacked out in an
+      afternoon, and the team was able to ship the product in two weeks.
+      Because the source is minimal and understandable, it was easy to
+      add several Backbone extensions for Groupon Now!: changing the router
+      to handle URLs with querystring parameters, and adding a simple
+      in-memory store for caching repeated requests for the same data.
+    
+
+EXAMPLES-BASECAMP				*backbone-examples-basecamp*
+
+
+      37Signals used Backbone.js to create
+      Basecamp Mobile, the mobile version
+      of their popular project management software. You can access all your Basecamp
+      projects, post new messages, and comment on milestones (all represented
+      internally as Backbone.js models).
+    
+
+EXAMPLES-SLAVERY-FOOTPRINT				*backbone-examples-slavery-footprint*
+
+
+      Slavery Footprint
+      allows consumers to visualize how their consumption habits are
+      connected to modern-day slavery and provides them with an opportunity
+      to have a deeper conversation with the companies that manufacture the
+      goods they purchased.
+      Based in Oakland, California, the Slavery Footprint team works to engage
+      individuals, groups, and businesses to build awareness for and create
+      deployable action against forced labor, human trafficking, and modern-day
+      slavery through online tools, as well as off-line community education and
+      mobilization programs.
+    
+
+EXAMPLES-STRIPE				*backbone-examples-stripe*
+
+
+      Stripe provides an API for accepting
+      credit cards on the web. Stripe's
+      management interface was recently
+      rewritten from scratch in Coffeescript using Backbone.js as the primary
+      framework, Eco for templates, Sass for stylesheets, and Stitch to package
+      everything together as CommonJS modulas. The new app uses
+      Stripe's API directly for the
+      majority of its actions; Backbone.js models made it simple to map
+      client-side models to their corresponding RESTful resources.
+    
+
+EXAMPLES-AIRBNB				*backbone-examples-airbnb*
+
+
+      Airbnb used Backbone.js and
+      CoffeeScript to quickly build
+      Airbnb Mobile
+      in six weeks with a team of three. The mobile version of Airbnb lets you
+      discover and book rental spaces directly from your phone: from a private
+      apartment to a private island...
+    
+
+EXAMPLES-DIASPORA				*backbone-examples-diaspora*
+
+
+      Diaspora is a distributed social
+      network, formed from a number of independently operated pods.
+      You own your personal data, and control with whom you share.
+      All of Diaspora is open-source
+      code, built with Rails and Backbone.js.
+    
+
+EXAMPLES-SOUNDCLOUD				*backbone-examples-soundcloud*
+
+
+      SoundCloud is the leading sound sharing
+      platform on the internet, and Backbone.js provides the foundation for
+      SoundCloud Mobile. The project uses
+      the public SoundCloud API
+      as a data source (channeled through a nginx proxy),
+      jQuery templates
+      for the rendering, Qunit
+       and PhantomJS for
+      the testing suite. The JS code, templates and CSS are built for the
+      production deployment with various Node.js tools like
+      ready.js,
+      Jake,
+      jsdom.
+      The Backbone.History was modified to support the HTML5 history.pushState.
+      Backbone.sync was extended with an additional SessionStorage based cache
+      layer.
+    
+
+EXAMPLES-ARTSY				*backbone-examples-artsy*
+
+
+      Art.sy is a place to discover art you'll 
+      love. Art.sy is built on Rails, using 
+      Grape to serve a robust 
+      JSON API. The main site is a single page 
+      app written in Coffeescript and uses Backbone to provide structure around 
+      this API. An admin panel and partner CMS have also been extracted into 
+      their own API-consuming Backbone projects.
+    
+
+EXAMPLES-PANDORA				*backbone-examples-pandora*
+
+
+      When Pandora redesigned
+      their site in HTML5, they chose Backbone.js to help
+      manage the user interface and interactions. For example, there's a model
+      that represents the "currently playing track", and multiple views that
+      automatically update when the current track changes. The station list is a
+      collection, so that when stations are added or changed, the UI stays up to date.
+    
+
+EXAMPLES-CODE-SCHOOL				*backbone-examples-code-school*
+
+
+      Code School courses teach people
+      about various programming topics like CoffeeScript, CSS, Ruby on Rails,
+      and more. The new Code School course
+      challenge page
+      is built from the ground up on Backbone.js, using
+      everything it has to offer: the router, collections, models, and complex
+      event handling. Before, the page was a mess of jQuery DOM manipulation
+      and manual Ajax calls. Backbone.js helped introduce a new way to
+      think about developing an organized front-end application in Javascript.
+    
+
+EXAMPLES-CLOUDAPP				*backbone-examples-cloudapp*
+
+
+      CloudApp is simple file and link
+      sharing for the Mac. Backbone.js powers the web tools
+      which consume the documented API
+      to manage Drops. Data is either pulled manually or pushed by
+      Pusher and fed to
+      Mustache templates for
+      rendering. Check out the annotated source code
+      to see the magic.
+    
+
+EXAMPLES-SEATGEEK				*backbone-examples-seatgeek*
+
+
+      SeatGeek's stadium ticket maps were originally
+      developed with Prototype.js. Moving to Backbone.js and jQuery helped organize
+      a lot of the UI code, and the increased structure has made adding features
+      a lot easier. SeatGeek is also in the process of building a mobile
+      interface that will be Backbone.js from top to bottom.
+    
+
+EXAMPLES-GROVE				*backbone-examples-grove*
+
+
+      Grove.io provides hosted IRC for teams.
+      Backbone.js powers Grove's web client together with Handlebars.js templating.
+      Updates to chat stream are pulled in realtime using long-polling.
+    
+
+EXAMPLES-KANOGAMES				*backbone-examples-kanogames*
+
+
+      KANO/APPS used Backbone.js to create 
+      KANO/GAMES, a social gaming website. 
+      KANO/GAMES relies on Backbone.js for almost every aspect of the site: 
+      for seamless page loading, to construct menus, game listings and game 
+      canvases, to build interactive HTML5 avatars, and for 
+      user and developer profiles, and live feeds.
+    
+
+EXAMPLES-SHORTMAIL				*backbone-examples-shortmail*
+
+
+      410 Labs uses Backbone.js at
+      Shortmail.com to build a
+      fast and responsive inbox, driven by the Router.
+      Backbone works with a Rails backend to provide inbox rendering, archiving,
+      replying, composing, and even a changes feed. Using Backbone's event-driven
+      model and pushing the rendering and interaction logic to the front-end
+      has not only simplified the view code, it has also drastically reduced the
+      load on Shortmail's servers.
+    
+
+EXAMPLES-BATTLEFIELD				*backbone-examples-battlefield*
+
+
+      Battlefield Play4Free is
+      the latest free-to-play first person shooter from the same team that
+      created Battlefield Heroes. The in-game HTML5 front-end for makes heavy use of
+      Backbone's views, models and collections to help keep the code modular
+      and structured.
+    
+
+EXAMPLES-SALON				*backbone-examples-salon*
+
+
+      Salon.io provides a space where photographers,
+      artists and designers freely arrange their visual art on virtual walls.
+      Salon.io runs on Rails, but does not use
+      much of the traditional stack, as the entire frontend is designed as a
+      single page web app, using Backbone.js and
+      CoffeeScript.
+    
+
+EXAMPLES-TILEMILL				*backbone-examples-tilemill*
+
+
+      Our fellow
+      Knight Foundation News Challenge
+      winners, MapBox, created an open-source
+      map design studio with Backbone.js:
+      TileMill.
+      TileMill lets you manage map layers based on shapefiles and rasters, and
+      edit their appearance directly in the browser with the
+      Carto styling language.
+      Note that the gorgeous MapBox homepage
+      is also a Backbone.js app.
+    
+
+EXAMPLES-BLOSSOM				*backbone-examples-blossom*
+
+
+      Blossom is a lightweight project management
+      tool for lean teams. Backbone.js is heavily used in combination with
+      CoffeeScript to provide a smooth
+      interaction experience. The RESTful backend is built
+      with Flask on Google App Engine.
+    
+
+EXAMPLES-ANIMOTO				*backbone-examples-animoto*
+
+
+      Animoto is a web-based video creation
+      platform, where users can upload their own photos, video clips and music
+      and create beautifully orchestrated slideshows. The video editor app is
+      built with Backbone.js and jQuery and interfaces with a Ruby on Rails
+      backend. Backbone has provided structure which helps the Animoto team
+      iterate quickly on the codebase while reducing the risk of regressions.
+    
+
+EXAMPLES-DECIDE				*backbone-examples-decide*
+
+
+      Decide.com helps people decide when to buy
+      consumer electronics. It relies heavily on Backbone.js to render and
+      update its Search Results Page. An "infinite scroll" feature takes
+      advantage of a SearchResults model containing a collection of
+      Product models to fetch more results and render them on the fly
+      with Mustache. A SearchController keeps everything in sync and
+      maintains page state in the URL. Backbone also powers the user
+      accounts and settings management.
+    
+
+EXAMPLES-EDITD				*backbone-examples-editd*
+
+
+      EDITD aims to disrupt the fashion
+      industry with big data. The next generation of their web application
+      is based on a custom JavaScript framework that builds on top of
+      Backbone. The back end is
+      Django +
+      Elastic Search,
+      Handlebars.js is used for templating,
+      jsTestDriver for testing, and
+      Docco for quick documentation.
+    
+
+EXAMPLES-TRELLO				*backbone-examples-trello*
+
+
+      Trello is a collaboration tool that
+      organizes your projects into boards. A Trello board holds many lists of
+      cards, which can contain checklists, files and conversations, and may be
+      voted on and organized with labels. Updates on the board happen in
+      real time. The site was built ground up using Backbone.js for all the
+      models, views, and routes.
+    
+
+EXAMPLES-DUCKSBOARD				*backbone-examples-ducksboard*
+
+
+    Ducksboard is an online dashboard
+      for your SaaS and business metrics, built with
+      Twisted and
+      Django and using WebSockets.
+      It can fetch data from popular providers or accept input through
+      a simple API.
+      Backbone is used throughout Ducksboard's interface, every widget,
+      dashboard and SaaS account is a Backbone model with several views
+      (data display, configuration view). A
+      live demo
+      is available.
+    
+
+EXAMPLES-QUIETWRITE				*backbone-examples-quietwrite*
+
+
+      James Yu used Backbone.js to
+      create QuietWrite, an app
+      that gives writers a clean and quiet interface to concentrate on the text itself.
+      The editor relies on Backbone to persist document data to the server. He
+      followed up with a Backbone.js + Rails tutorial that describes how to implement
+      CloudEdit, a simple document editing app.
+    
+
+EXAMPLES-TZIGLA				*backbone-examples-tzigla*
+
+
+      Cristi Balan and
+      Irina Dumitrascu created
+      Tzigla, a collaborative drawing
+      application where artists make tiles that connect to each other to
+      create surreal drawings.
+      Backbone models help organize the code, routers provide
+      bookmarkable deep links,
+      and the views are rendered with
+      haml.js and
+      Zepto.
+      Tzigla is written in Ruby (Rails) on the backend, and
+      CoffeeScript on the frontend, with
+      Jammit
+      prepackaging the static assets.
+    
+
+FAQ				*backbone-faq*
+
+
+FAQ-EVENTS				*backbone-faq-events*
+
+
+      Catalog of Events
+      
+      Here's a list of all of the built-in  that Backbone.js can fire.
+      You're also free to trigger your own events on Models and Views as you
+      see fit.
+    
+
+FAQ-TIM-TOADY				*backbone-faq-tim-toady*
+
+
+      There's More Than One Way To Do It
+      
+      It's common for folks just getting started to treat the examples listed
+      on this page as some sort of gospel truth. In fact, Backbone.js is intended
+      to be fairly agnostic about many common patterns in client-side code.
+      For example...
+    
+
+      References between Models and Views can be handled several ways.
+      Some people like to have direct pointers, where views correspond 1:1 with
+      models (model.view and view.model). Others prefer to have intermediate
+      "controller" objects that orchestrate the creation and organization of
+      views into a hierarchy. Others still prefer the evented approach, and always
+      fire events instead of calling methods directly. All of these styles work well.
+    
+
+      Batch operations on Models are common, but often best handled differently
+      depending on your server-side setup. Some folks don't mind making individual
+      Ajax requests. Others create explicit resources for RESTful batch operations:
+      /notes/batch/destroy?ids=1,2,3,4. Others tunnel REST over JSON, with the
+      creation of "changeset" requests:
+    
+
+  {
+    "create":  [array of models to create]
+    "update":  [array of models to update]
+    "destroy": [array of model ids to destroy]
+  }
+
+
+      Feel free to define your own events. Backbone.Events
+      is designed so that you can mix it in to any JavaScript object or prototype.
+      Since you can use any string as an event, it's often handy to bind
+      and trigger your own custom events: model.on("selected:true") or
+      model.on("editing")
+    
+
+      Render the UI as you see fit. Backbone is agnostic as to whether you
+      use Underscore templates,
+      Mustache.js, direct DOM
+      manipulation, server-side rendered snippets of HTML, or
+      jQuery UI in your render function.
+      Sometimes you'll create a view for each model ... sometimes you'll have a
+      view that renders thousands of models at once, in a tight loop. Both can be
+      appropriate in the same app, depending on the quantity of data involved,
+      and the complexity of the UI.
+    
+
+FAQ-NESTED				*backbone-faq-nested*
+
+
+      Nested Models & Collections
+      
+      It's common to nest collections inside of models with Backbone. For example,
+      consider a Mailbox model that contains many Message models.
+      One nice pattern for handling this is have a this.messages collection
+      for each mailbox, enabling the lazy-loading of messages, when the mailbox
+      is first opened ... perhaps with MessageList views listening for
+      "add" and "remove" events.
+    
+
+var Mailbox = Backbone.Model.extend({
+
+  initialize: function() {
+    this.messages = new Messages;
+    this.messages.url = '/mailbox/' + this.id + '/messages';
+    this.messages.on("reset", this.updateCounts);
+  },
+
+  ...
+
+});
+
+var Inbox = new Mailbox;
+
+// And then, when the Inbox is opened:
+
+Inbox.messages.fetch();
+
+
+      If you're looking for something more opinionated, there are a number of
+      Backbone plugins that add sophisticated associations among models,
+      available on the wiki.
+    
+
+      Backbone doesn't include direct support for nested models and collections
+      or "has many" associations because there are a number
+      of good patterns for modeling structured data on the client side, and
+      Backbone should provide the foundation for implementing any of them.
+      You may want to&hellip;
+    
+
+FAQ-BOOTSTRAP				*backbone-faq-bootstrap*
+
+
+      Loading Bootstrapped Models
+      
+      When your app first loads, it's common to have a set of initial models that
+      you know you're going to need, in order to render the page. Instead of
+      firing an extra AJAX request to fetch them,
+      a nicer pattern is to have their data already ped into the page.
+      You can then use reset to populate your
+      collections with the initial data. At DocumentCloud, in the
+      ERB template for the
+      workspace, we do something along these lines:
+    
+
+<script>
+  var Accounts = new Backbone.Collection;
+  Accounts.reset(<%= @accounts.to_json %>);
+  var Projects = new Backbone.Collection;
+  Projects.reset(<%= @projects.to_json(:collaborators => true) %>);
+</script>
+
+
+FAQ-EXTENDING				*backbone-faq-extending*
+
+
+      Extending Backbone
+      
+      Many JavaScript libraries are meant to be insular and self-enclosed,
+      where you interact with them by calling their public API, but never peek
+      inside at the guts. Backbone.js is not that kind of library.
+    
+
+      Because it serves as a foundation for your application, you're meant to
+      extend and enhance it in the ways you see fit &mdash; the entire source
+      code is annotated to make this easier
+      for you. You'll find that there's very little there apart from core
+      functions, and most of those can be overriden or augmented should you find
+      the need. If you catch yourself adding methods to Backbone.Model.prototype,
+      or creating your own base subclass, don't worry &mdash; that's how things are
+      supposed to work.
+    
+
+FAQ-MVC				*backbone-faq-mvc*
+
+
+      How does Backbone relate to "traditional" MVC?
+      
+      Different implementations of the
+      Model-View-Controller
+      pattern tend to disagree about the definition of a controller. If it helps any, in
+      Backbone, the View class can also be thought of as a
+      kind of controller, dispatching events that originate from the UI, with
+      the HTML template serving as the true view. We call it a View because it
+      represents a logical chunk of UI, responsible for the contents of a single
+      DOM element.
+    
+
+      Comparing the overall structure of Backbone to a server-side MVC framework
+      like Rails, the pieces line up like so:
+    
+
+FAQ-THIS				*backbone-faq-this*
+
+
+      Binding ""
+      
+      Perhaps the single most common JavaScript "gotcha" is the fact that when
+      you pass a function as a callback, its value for this is lost. With
+      Backbone, when dealing with events and callbacks,
+      you'll often find it useful to rely on
+      _.bind and
+      _.bindAll
+      from Underscore.js.
+    
+
+      When binding callbacks to Backbone events, you can choose to pass an optional
+      third argument to specify the this that will be used when the
+      callback is later invoked:
+    
+
+var MessageList = Backbone.View.extend({
+
+  initialize: function() {
+    var messages = this.collection;
+    messages.on("reset", this.render, this);
+    messages.on("add", this.addMessage, this);
+    messages.on("remove", this.removeMessage, this);
+  }
+
+});
+
+// Later, in the app...
+
+Inbox.messages.add(newMessage);
+
+
+FAQ-RAILS				*backbone-faq-rails*
+
+
+      Working with Rails
+      
+      Backbone.js was originally extracted from
+      a Rails application; getting
+      your client-side (Backbone) Models to sync correctly with your server-side
+      (Rails) Models is painless, but there are still a few things to be aware of.
+    
+
+      By default, Rails adds an extra layer of wrapping around the JSON representation
+      of models. You can disable this wrapping by setting:
+    
+
+ActiveRecord::Base.include_root_in_json = false
+
+
+      ... in your configuration. Otherwise, override
+      parse to pull model attributes out of the
+      wrapper. Similarly, Backbone PUTs and POSTs direct JSON representations
+      of models, where by default Rails expects namespaced attributes. You can
+      have your controllers filter attributes directly from params, or
+      you can override toJSON in Backbone to add
+      the extra wrapping Rails expects.
+    
+
+
+vim:tw=78:ts=8:ft=help:norl:

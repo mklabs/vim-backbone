@@ -3,6 +3,10 @@
   "name": "vim-backbone",
   "description": "Collection of Backbone VIM snippets and templates.",
   "version": "0.1.0",
-  "dependencies": {},
+  "dependencies": {
+    "request": "~2.9.202",
+    "trumpet": "~0.2.4",
+    "hogan": "~1.0.5-dev"
+  },
   "devDependencies": {}
 }

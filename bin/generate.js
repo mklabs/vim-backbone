@@ -1,0 +1,100 @@
+var fs = require('fs'),
+  path = require('path'),
+  trumpet = require('trumpet'),
+  hogan = require('hogan');
+
+var template = hogan.compile(fs.readFileSync(path.join(__dirname, 'tmpl.txt'), 'utf8'));
+
+//
+// Backbone doc generator.
+//
+// Parsed streaming html from http://backbonejs.org/, build the doc data
+// in a structured manner, and finally write back the according vim
+// matching help page, from template.
+//
+// 1. Parses sidebar links, build tocs from each link.
+// 2. Reparse html and select each #toc-id
+// 3. For each, split the docuement for each section.
+//
+// Woo won't be easy.
+
+
+var tr = trumpet();
+
+var links = [], last;
+tr.select('*', function(node) {
+  var id = node.attributes.id;
+  if(id) {
+    node.elements = [];
+    last = node;
+    links.push(last);
+  }
+
+  if(!last) return;
+  node.html(function (html) {
+    // clenup <b> in headers, does not display well in tmpl
+    node.body = cleanHtml(html);
+    last.elements.push(node);
+  });
+});
+
+tr.on('end', function() {
+
+  // filter out some sections
+  links = links.filter(function(l) {
+    // like sidebar
+    if(l.attributes.id === 'sidebar') return false;
+    // or download
+    if(l.attributes.id === 'downloads') return false;
+    // or changelog
+    if(l.attributes.id === 'changelog') return false;
+    return true;
+  });
+
+
+  links = links.map(function(l) {
+    var id = l.attributes.id;
+    l.slug = 'backbone-' + id.replace(/[^\w]+/g, '-').toLowerCase();
+    l.title = id.toUpperCase();
+
+    // filter out some elements not rendering that well in tmpl
+    l.elements = l.elements.filter(function(el) {
+      // basically only allow p, pre and code el
+      var n = el.name;
+      return n === 'p' || n === 'pre' || n === 'code';
+    });
+
+    // some more formating on these elements
+    l.elements = l.elements.map(function(el, i, arr) {
+      // pretty specific stuff, trying to cleanup body string from some
+      // noise
+      if(!el.attributes.id) return el;
+      var thing = el.attributes.id.split('-')[1] || '';
+      el.body = el.body.replace(thing, '');
+      return el;
+    });
+
+    return l;
+  });
+
+  var content = template.render({
+    description: 'Plugin for working with Backbone applications',
+    links: links
+  });
+
+  // cleanup whitespaces
+
+  fs.writeFileSync(path.join(__dirname, '../doc/backbone.txt'), content);
+});
+
+var request = require('request');
+request('http://backbonejs.org/').pipe(tr);
+
+function cleanHtml(s) {
+  return s
+    // strip tags
+    .replace(/<\w+(\s+("[^"]*"|'[^']*'|[^>])+)?>|<\/\w+>/gi, '')
+    .replace(/&lt;/g,'<')
+    .replace(/&gt;/g,'>')
+    .replace(/&amp;/g,'&');
+}
