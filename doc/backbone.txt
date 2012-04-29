@@ -78,7 +78,7 @@
 |backbone-view-extend|		View-extend
 |backbone-view-constructor|		View-constructor
 |backbone-view-el|		View-el
-|backbone-view-el|		View-$el
+|backbone-view-$el|		View-$el
 |backbone-view-setelement|		View-setElement
 |backbone-view-attributes|		View-attributes
 |backbone-view-dollar|		View-dollar
@@ -1832,7 +1832,7 @@ var body = new BodyView();
 alert(item.el + ' ' + body.el);
 
 
-VIEW-$EL				*backbone-view-el*
+VIEW-$EL				*backbone-view-$el*
 
 view.$el
 

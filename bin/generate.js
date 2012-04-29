@@ -54,7 +54,7 @@ tr.on('end', function() {
 
   links = links.map(function(l) {
     var id = l.attributes.id;
-    l.slug = 'backbone-' + id.replace(/[^\w]+/g, '-').toLowerCase();
+    l.slug = 'backbone-' + id.toLowerCase();
     l.title = id.toUpperCase();
 
     // filter out some elements not rendering that well in tmpl
