@@ -1,0 +1,18 @@
+#!/usr/bin/env node
+
+var fs = require('fs'),
+  path = require('path'),
+  hogan = require('hogan');
+
+console.log('hello im skeleton buddy');
+
+var templates = path.join(__dirname, '../templates');
+
+var args = process.argv.slice(2);
+
+console.log("Hi! I'm a template generator.")
+console.log("and I'll soon do awesome things based on your application directory");
+
+console.log();
+console.log(args);
+
