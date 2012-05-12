@@ -23,7 +23,7 @@ What it does:
 * snipmates snippets. When filetype is set to `javascript`, type
   `view<tab>`, `model<tab>` or `router<tab>`
 
-What is should do:
+What it should do:
 
 * vim templates on `BufNewFile`. Should this be node-based with mustache
   like templates, and intelligently parse current filepath / app
