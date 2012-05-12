@@ -4,7 +4,8 @@
   "description": "Collection of Backbone VIM snippets and templates.",
   "version": "0.1.0",
   "dependencies": {
-    "hogan": "~1.0.5-dev"
+    "hogan": "~1.0.5-dev",
+    "backbone": "~0.9.2"
   },
   "devDependencies": {
     "request": "~2.9.202",

@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+
+
+var Backbone = require('backbone');
+
+var type = process.argv.slice(2)[0];
+
+if(!~['Model', 'Collection', 'Router', 'View'].indexOf(type)) return;
+
+var proto = Backbone[type].prototype;
+
+console.log(Object.keys(proto).join('\n'));
+
