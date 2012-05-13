@@ -2,17 +2,152 @@
 
 var fs = require('fs'),
   path = require('path'),
-  hogan = require('hogan');
+  read = require('read'),
+  nopt = require('nopt'),
+  glob = require('glob');
 
-console.log('hello im skeleton buddy');
+var opts = nopt(),
+  args = opts.argv.remain,
+  type = args[0],
+  what = args[1];
 
-var templates = path.join(__dirname, '../templates');
+// on windows, it would break. But I suspect there's not a lot of Vim users
+// running on windows.
+var home = process.env.HOME;
 
-var args = process.argv.slice(2);
+//
+// templates
+//
+// For every template, if the file's name that is going to be created match
+// a particular template file, it is used. Otherwise, fallsback to
+// `<type>/default.js`
+//
+// Templates loadpath should include and try to load in this order files
+// from:
+// - `./vim/templates` (relative to working directory)
+// - `~/.vim/templates/backbone/`
+// - and the local `./snippets` dir (in this repo).
+//
 
-console.log("Hi! I'm a template generator.")
-console.log("and I'll soon do awesome things based on your application directory");
+var paths = [
+  path.join(opts.cwd, 'vim/templates'),
+  path.join(home, '.vim/templates'),
+  path.join(__dirname, '../snippets')
+];
 
-console.log();
-console.log(args);
+var files = paths.map(function(dir) {
+  return glob.sync('**/*.snippet', {
+    cwd: dir
+  })
+
+  // prepend the relevant dir, we want abs path
+  .map(function(file) {
+    return path.join(dir, file);
+  });
+})
+// reduce it down to single array
+.reduce(function(a, b) {
+  return a.concat(b);
+}, []);
+
+// filter files based on type and filename
+var matches = files.filter(function(file) {
+  var basename = path.basename(file),
+    filename = basename.replace(path.extname(file), '');
+
+  return filename === what || filename === type;
+});
+
+if(!matches.length) return;
+
+var content = fs.readFileSync(matches[0], 'utf8');
+
+// parse out the template file for snipmate like placeholder,
+// each of these is then prompted for value
+
+var rhold = /\{\d+\:([^\}]+)\}?/;
+
+var holders = content.split(/\n/).filter(function(line) {
+  return rhold.test(line);
+})
+
+.map(function(line, i) {
+  var m = line.match(rhold),
+    match = (m || [])[0],
+    parts = match.split(':'),
+    name = (parts[1] || '').replace(/\}$/, ''),
+    def = (parts[2] || '').trim().replace(/\}$/, '');
+
+  var holds = {
+    name: name,
+    prompt: name + ': ',
+    defaults: def,
+    orig: m[0]
+  };
+
+  if(i === 0 && what) holds.defaults = what;
+
+  if(/^\$\d/.test(holds.prompt)) holds.disabled = true;
+
+  // for each, register the prompts
+  ask(holds);
+  return holds;
+});
+
+// do the actual prompt
+
+prompt(function(err, prompts) {
+  if(err) return console.error('Oh snap, got error..');
+  // and generate, based on prompts
+  generate(ask.prompts, prompts);
+});
+
+
+function generate(prompts, data) {
+  prompts.forEach(function(p) {
+    var replacement = data[p.name];
+    if((/^\$\d/).test(p.name)) {
+      replacement = data[prompts[parseInt(p.name.replace(/^\$/, ''), 10) - 1].name];
+    }
+    content = content.replace('$' + p.orig, replacement);
+  });
+
+  // final cleanup, delete any remainiing unamed placeholder
+  content = content.replace(/\$\{\d+\:\}/g, '')
+
+  // write resulting template into our temporary file,
+  // reread from Vim. This is done this way as the script is not executed with system(),
+  // because of the prompts that needs user input
+  fs.writeFileSync(path.join(__dirname, 'template.tmp'), content);
+  process.exit(0);
+}
+
+function ask(o) {
+  var name = o.name,
+    prompt = o.prompt;
+
+  ask.prompts = ask.prompts || (ask.prompts = []);
+  ask.prompts = ask.prompts.concat({
+    name: name,
+    prompt: prompt,
+    default: o.defaults || '',
+    disabled: o.disabled,
+    orig: o.orig
+  });
+}
+
+function prompt(data, cb) {
+  if(!cb) cb = data, data = {};
+  var prompts = [].concat(ask.prompts);
+
+  (function next(prompt) {
+    if(!prompt) return cb(null, data);
+    if(prompt.disabled) return next(prompts.shift());
+    read(prompt, function(err, val) {
+      if(err) return cb(err);
+      data[prompt.name] = val;
+      next(prompts.shift());
+    });
+  })(prompts.shift());
+}
 

@@ -5,7 +5,10 @@
   "version": "0.1.0",
   "dependencies": {
     "hogan": "~1.0.5-dev",
-    "backbone": "~0.9.2"
+    "backbone": "~0.9.2",
+    "read": "0.0.3",
+    "glob": "~3.1.9",
+    "nopt": "~1.0.10"
   },
   "devDependencies": {
     "request": "~2.9.202",
